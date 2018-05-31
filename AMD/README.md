@@ -1,3 +1,45 @@
+# AMD overclocking patches for undervolting
+
+I've pretty much automated the entire process and made it simple to reapply the patch after HiveOS upgrades overwrite the changes to the amd-oc script.
+
+All you really have to do is step #1, but steps 2-4 are just to verify everything did what it was supposed to.
+
+I hope this helps everyone save money on the electric bill like I did.
+
+If you are so inclined to donate to a poor miner's cause, I would graciously accept anything!
+
+```
+Ethereum: 0x7472a4812200fc320793a946f027d559e63b164d
+Ethereum Classic: 0xc5b3e79fb542c6c8b2b8b71406a8e275b9b783b7
+```
+
+```
+Bitcoin: 1LvnfMGfz8xTaZgi25DiRFaJoFvpAPncT5
+Bitcoin Cash: 1Ec3CPq3WPsWT7fQaDGgTYkVPNtMZ3CVaA
+```
+
+```
+Litecoin: LSZBbS7EsKnjXQ1FKxYuAmR5quzEazXfm1
+```
+
+```
+Monero: 45kv3V7hAA48JH9eZjKM1HLub8wFnkJ4ugqKNPsnmKzbE6t9tYuRqgb3mGwXJDLMePACJNrnsWx4uGaLxJM8adN2LC1Sqap.d7a674172a634431ad96750cff0c45100f3e7bdc31134e928e7ec42fc971c050
+```
+
+```
+EOS: 0x7472a4812200fc320793a946f027d559e63b164d
+```
+
+```
+Electroneum: etnk3yDpybAEBqz3nq63qmev4thRi9eFH64CVKzZc2w3A7vehpZkGvd97uSWxtmtAwjTnfKEp9Rup3md7nZyu9Q49VzZQKhxWN
+```
+
+```
+Sia Coin: 2976b8836ab38c51acbbd9f96f02674a62761251053ef9e5b9f9c1feaed5ea0022728ea4f7a3
+```
+
+
+
 ## Initial patch command
 ```
 1. curl -Ls https://goo.gl/pJEzAQ | bash
