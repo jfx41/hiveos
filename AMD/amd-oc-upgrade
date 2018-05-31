@@ -39,9 +39,25 @@ curl -s $patch_url | patch --verbose --backup
 
 echo
 echo "AMD OC patching complete."
+echo
 
-# Go back to our original directory
-cd -
+# Go back to our home directory so we can add an alias
+cd
+
+echo "Attempting to add an alias: amd-oc-patch"
+check=$(grep amd-oc-patch ~/.bash_aliases)
+
+# If this is empty, we haven't added it before
+if [ -z $check ]
+then
+	cat <<EOA >> ~/.bash_aliases
+alias amd-oc-patch='curl -Ls https://goo.gl/7TyXL3 | bash'
+EOA
+
+	echo "Added alias 'amd-oc-patch'.  You can use that command to patch amd-oc after HiveOS upgrades."
+else
+	echo "It appears the 'amd-oc-patch' alias already exists, skipping creation."
+fi
 
 exit 0
 
