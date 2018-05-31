@@ -54,9 +54,10 @@ then
 alias amd-oc-patch='curl -Ls https://goo.gl/7TyXL3 | bash'
 EOA
 
-	echo "Added alias 'amd-oc-patch'.  You can use that command to patch amd-oc after HiveOS upgrades."
+	echo "	Alias 'amd-oc-patch' added."
+	echo "	You can use that command to patch amd-oc after HiveOS upgrades."
 else
-	echo "It appears the 'amd-oc-patch' alias already exists, skipping creation."
+	echo "	Alias 'amd-oc-patch' exists."
 fi
 
 exit 0
