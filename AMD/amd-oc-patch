@@ -7,6 +7,9 @@ amd_oc="$hive_sbin/amd-oc"	# Path to amd-oc
 # GitHub raw data URL for the AMD OC patch file
 patch_url="https://raw.githubusercontent.com/jfx41/hiveos/master/AMD/amd-oc.patch"
 
+# Short URL to the main amd-oc-patch script
+script_url="https://goo.gl/y7ue2T"
+
 # Make sure we are root
 if [ $gid != 0 ]
 then
@@ -51,7 +54,7 @@ check=$(grep amd-oc-patch ~/.bash_aliases)
 if [ -z $check ]
 then
 	cat <<EOA >> ~/.bash_aliases
-alias amd-oc-patch='curl -Ls https://goo.gl/7TyXL3 | bash'
+alias amd-oc-patch="curl -Ls $script_url | bash"
 EOA
 
 	echo "	Alias 'amd-oc-patch' added."
