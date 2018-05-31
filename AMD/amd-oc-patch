@@ -51,7 +51,7 @@ echo "Attempting to add an alias: amd-oc-patch"
 check=$(grep amd-oc-patch ~/.bash_aliases)
 
 # If this is empty, we haven't added it before
-if [ -z $check ]
+if [ -z "$check" ]
 then
 	cat <<EOA >> ~/.bash_aliases
 alias amd-oc-patch="curl -Ls $script_url | bash"
