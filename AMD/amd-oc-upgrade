@@ -4,6 +4,9 @@ gid=$(id -g)			# Get the current user's GID
 hive_sbin="/hive/sbin"		# Hive's superuser binary dir
 amd_oc="$hive_sbin/amd-oc"	# Path to amd-oc
 
+# GitHub raw data URL for the AMD OC patch file
+patch_url="https://raw.githubusercontent.com/jfx41/hiveos/master/AMD/amd-oc.patch"
+
 # Make sure we are root
 if [ $gid != 0 ]
 then
