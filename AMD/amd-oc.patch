@@ -1,0 +1,101 @@
+*** amd-oc	2018-05-30 22:13:23.444157036 -0400
+--- amd-oc.kuzuri	2018-05-30 22:13:12.528341266 -0400
+***************
+*** 165,185 ****
+  		args+=" --mem-clock ${MEM_CLOCK[$i]} --mem-state $memoryState"
+  	fi
+  
+! 	if [[ ! -z $CORE_CLOCK && ${CORE_CLOCK[$i]} > 0 ]]; then
+! 		[[ -z $coreState ]] && # core set is not specified, let's use some default or it will not work
+! 			echo -e "${YELLOW}WARNING: Unset core state, falling back to $DEFAULT_CORE_STATE${NOCOLOR}" &&
+! 			coreState=$DEFAULT_CORE_STATE
+  		#wolfamdctrl -i $cardno --core-clock ${CORE_CLOCK[$i]} --core-state $coreState
+! 		args+=" --core-clock ${CORE_CLOCK[$i]} --core-state $coreState"
+! 	fi
+  
+  
+! 	if [[ ! -z $CORE_VDDC && ${CORE_VDDC[$i]} > 0 ]]; then
+! 		[[ -z $coreState ]] && # core set is not specified, let's use some default or it will not work
+! 			echo -e "${YELLOW}WARNING: Unset core state, falling back to $DEFAULT_CORE_STATE${NOCOLOR}" &&
+! 			coreState=$DEFAULT_CORE_STATE
+! 		args+=" --vddc-table-set ${CORE_VDDC[$i]} --volt-state $coreState"
+! 	fi
+  
+  
+  
+--- 165,185 ----
+  		args+=" --mem-clock ${MEM_CLOCK[$i]} --mem-state $memoryState"
+  	fi
+  
+! #	if [[ ! -z $CORE_CLOCK && ${CORE_CLOCK[$i]} > 0 ]]; then
+! #		[[ -z $coreState ]] && # core set is not specified, let's use some default or it will not work
+! #			echo -e "${YELLOW}WARNING: Unset core state, falling back to $DEFAULT_CORE_STATE${NOCOLOR}" &&
+! #			coreState=$DEFAULT_CORE_STATE
+  		#wolfamdctrl -i $cardno --core-clock ${CORE_CLOCK[$i]} --core-state $coreState
+! #		args+=" --core-clock ${CORE_CLOCK[$i]} --core-state $coreState"
+! #	fi
+  
+  
+! #	if [[ ! -z $CORE_VDDC && ${CORE_VDDC[$i]} > 0 ]]; then
+! #		[[ -z $coreState ]] && # core set is not specified, let's use some default or it will not work
+! #			echo -e "${YELLOW}WARNING: Unset core state, falling back to $DEFAULT_CORE_STATE${NOCOLOR}" &&
+! #			coreState=$DEFAULT_CORE_STATE
+! #		args+=" --vddc-table-set ${CORE_VDDC[$i]} --volt-state $coreState"
+! #	fi
+  
+  
+  
+***************
+*** 187,195 ****
+  	#	wolfamdctrl -i $cardno --core-vddc-idx ${CORE_VDDC_INDEX[$i]} --core-state $coreState
+  
+  
+! 	[[ ! -z $FAN && ${FAN[$i]} > 0 ]] &&
+! 		#wolfamdctrl -i $cardno --set-fanspeed ${FAN[$i]}
+! 		args+=" --set-fanspeed ${FAN[$i]}"
+  
+  
+  	if [[ -z $args ]]; then
+--- 187,195 ----
+  	#	wolfamdctrl -i $cardno --core-vddc-idx ${CORE_VDDC_INDEX[$i]} --core-state $coreState
+  
+  
+! #	[[ ! -z $FAN && ${FAN[$i]} > 0 ]] &&
+! #		#wolfamdctrl -i $cardno --set-fanspeed ${FAN[$i]}
+! #		args+=" --set-fanspeed ${FAN[$i]}"
+  
+  
+  	if [[ -z $args ]]; then
+***************
+*** 204,209 ****
+--- 204,233 ----
+  		echo $oc_cmd
+  		eval $oc_cmd
+  	fi
++ 
++ 	# Sets the core states 1-7 to the "Core Clock" setting for this card in the AMD OC configuration
++ 	for coreStateCtr in {1..7}
++ 	do
++ 		oc_cmd="wolfamdctrl -i $cardno --core-clock ${CORE_CLOCK[$i]} --core-state $coreStateCtr"
++ 		echo $oc_cmd
++ 		eval $oc_cmd
++ 	done
++ 
++ 	# Sets the volt states 1-15 to the "Core Voltage" setting for this card in the AMD OC configuration
++ 	for voltStateCtr in {1..15}
++ 	do
++ 		oc_cmd="wolfamdctrl -i $cardno --vddc-table-set ${CORE_VDDC[$i]} --volt-state $voltStateCtr"
++ 		echo $oc_cmd
++ 		eval $oc_cmd
++ 	done
++ 
++ 	# Sets the fanspeed to the "Fan" setting for this card in the AMD OC configuration
++ 	if [[ ! -z $FAN && ${FAN[$i]} > 0 ]]
++ 	then
++ 		oc_cmd="wolfamdctrl -i $cardno --set-fanspeed ${FAN[$i]}"
++ 		echo $oc_cmd
++ 		eval $oc_cmd
++ 	fi
+  
+  	if [[ ! -z $coreState || ! -z $memoryState ]]; then
+  		echo "manual" > /sys/class/drm/card$cardno/device/power_dpm_force_performance_level

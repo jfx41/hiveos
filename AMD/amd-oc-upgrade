@@ -1,0 +1,39 @@
+#!/bin/bash
+
+gid=$(id -g)			# Get the current user's GID
+hive_sbin="/hive/sbin"		# Hive's superuser binary dir
+amd_oc="$hive_sbin/amd-oc"	# Path to amd-oc
+
+# Make sure we are root
+if [ $gid != 0 ]
+then
+	echo "You aren't root.  Aborting."
+	exit 1
+fi
+
+# Make sure this is HiveOS and /hive/sbin is a directory
+if [ ! -d $hive_sbin ]
+then
+	echo "Is this HiveOS?  I can't find /hive/sbin."
+	exit 1
+fi
+
+# Make sure /hive/sbin/amd-oc is a file
+if [ ! -f $amd_oc ]
+then
+	echo "Bailing out, $amd_oc doesn't appear to exist."
+	exit 1
+fi
+
+# If we get here, then let's do this thing
+echo "Starting amd-oc patch process ..."
+
+cd $hive_sbin
+curl -s $patch_url | patch --verbose --backup
+
+echo
+echo "AMD OC patching complete."
+
+exit 0
+
+# EOF
