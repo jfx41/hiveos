@@ -29,7 +29,8 @@ then
 fi
 
 # If we get here, then let's do this thing
-echo "Starting amd-oc patch process ..."
+echo "Starting AMD OC patch process ..."
+echo
 
 cd $hive_sbin
 
