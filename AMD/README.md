@@ -6,7 +6,7 @@ All you really have to do is step #1, but steps 2-4 are just to verify everythin
 
 I hope this helps everyone save money on the electric bill like I did.
 
-If you are so inclined to donate to a poor miner's cause, I would graciously accept anything!
+If you are so inclined to donate to a poor miners cause, I would graciously accept anything!
 
 ```
 Ethereum: 0x7472a4812200fc320793a946f027d559e63b164d
