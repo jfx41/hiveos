@@ -1,5 +1,9 @@
 ## Initial patch command
 ```
+curl -Ls https://goo.gl/pJEzAQ | bash
+```
+
+```
 root@hiveos:~# curl -Ls https://goo.gl/pJEzAQ | bash
 Starting AMD OC patch process ...
 
@@ -26,6 +30,10 @@ Attempting to add an alias: amd-oc-patch
 
 ## Verify the amd-oc-patch alias was created
 ```
+# cat .bash_aliases
+```
+
+```
 root@hiveos:~# cat .bash_aliases
 alias sud='sudo -s'
 alias t='tail -n 100 -f'
@@ -40,11 +48,19 @@ alias amd-oc-patch="curl -Ls https://goo.gl/pJEzAQ | bash"
 
 ## Reload the aliases (or log out and back in)
 ```
+# . .bash_aliases
+```
+
+```
 root@hiveos:~# . .bash_aliases
 ```
 
 
 ## Verify amd-oc-patch is there
+```
+# alias
+```
+
 ```
 root@hiveos:~# alias
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -66,6 +82,10 @@ alias t='tail -n 100 -f'
 ```
 
 ## This is what happens if you try and patch an already patched amd-oc (just hit ENTER twice)
+```
+# amd-oc-patch
+```
+
 ```
 root@hiveos:~# amd-oc-patch
 Starting AMD OC patch process ...
