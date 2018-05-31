@@ -32,10 +32,15 @@ fi
 echo "Starting amd-oc patch process ..."
 
 cd $hive_sbin
+
+# Does all the work here
 curl -s $patch_url | patch --verbose --backup
 
 echo
 echo "AMD OC patching complete."
+
+# Go back to our original directory
+cd -
 
 exit 0
 
