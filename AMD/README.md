@@ -109,3 +109,10 @@ AMD OC patching complete.
 Attempting to add an alias: amd-oc-patch
 	Alias 'amd-oc-patch' exists.
 ```
+
+## After every HiveOS upgrade run 'amd-oc-patch' again
+```
+root@hiveos:~# amd-oc-patch
+```
+
+# THE END OF THE INTERNETS
