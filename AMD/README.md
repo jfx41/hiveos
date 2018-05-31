@@ -81,7 +81,8 @@ alias sx='screen -x'
 alias t='tail -n 100 -f'
 ```
 
-## This is what happens if you try and patch an already patched amd-oc (just hit ENTER twice if you do this)
+## This is what happens if you try and patch an already patched amd-oc
+## Just hit ENTER twice if you do this!
 ```
 root@hiveos:~# amd-oc-patch
 Starting AMD OC patch process ...
